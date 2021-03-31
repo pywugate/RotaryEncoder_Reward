@@ -1,9 +1,6 @@
 # RotaryEncoder_Reward
 
-
-RotaryEncoder_Reward is an application for mouse behaviour experiment.
-
-It was designed to study in central nervous system for head-fixed mouse.
+RotaryEncoder_Reward was designed for mouse behaviour experiment for head-fixed mouse.
 
 Please contact me via github if any question.
 
@@ -30,5 +27,6 @@ Please dig in the detail in my Arduino code and those libs.
 1. Wiring photos
 2. Videos
 
-#### Developer: WuPingYen a.k.a. 吳秉彥
-#### Period: during the time in Dr. Yu-Wei Wu's lab in IMB, Academia Sinica.
+#### WuPingYen a.k.a. 吳秉彥
+#### R.A in Dr. Yu-Wei Wu lab
+#### Institute of Molecular Biology, Academia Sinica
