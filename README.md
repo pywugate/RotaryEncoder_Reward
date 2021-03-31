@@ -7,7 +7,7 @@ It was designed to study in central nervous system for head-fixed mouse.
 
 Please contact me via github if any question.
 
-## IMPORTANT: The parametres may vary due to different devices.
+### IMPORTANT: The parametres may vary due to different devices.
 
 ## Devices used:
 1. Arduino UNO R3
