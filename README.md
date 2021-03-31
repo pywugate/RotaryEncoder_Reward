@@ -26,7 +26,7 @@ Please dig in the detail in my Arduino code and those libs.
 4. github.com/adafruit/Adafruit_MCP4725
 5. arduino.cc/en/reference/wire
 
-### Example photos and/or videos
+## Example photos and/or videos
 1. Wiring photos
 2. Videos
 
