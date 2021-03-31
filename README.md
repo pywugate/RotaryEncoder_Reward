@@ -27,6 +27,7 @@ Please dig in the detail in my Arduino code and those libs.
 1. Wiring photos
 2. Videos
 
-#### WuPingYen a.k.a. 吳秉彥
-#### R.A in Dr. Yu-Wei Wu lab
-#### Institute of Molecular Biology, Academia Sinica
+####### WuPingYen a.k.a. 吳秉彥
+
+###### R.A in Dr. Yu-Wei Wu lab
+###### Institute of Molecular Biology, Academia Sinica
