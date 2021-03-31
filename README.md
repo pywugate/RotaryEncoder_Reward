@@ -30,5 +30,5 @@ Please dig in the detail in my Arduino code and those libs.
 1. Wiring photos
 2. Videos
 
-###### Developer: WuPingYen a.k.a. 吳秉彥
-###### Period: during the time in Dr. Yu-Wei Wu's lab in IMB, Academia Sinica.
+#### Developer: WuPingYen a.k.a. 吳秉彥
+#### Period: during the time in Dr. Yu-Wei Wu's lab in IMB, Academia Sinica.
