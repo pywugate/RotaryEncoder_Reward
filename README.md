@@ -19,5 +19,5 @@ It also contains the usage of some libraries, please read the detail in my Ardui
 5. arduino.cc/en/reference/wire
 
 # Example photos and/or videos
-1. Wiring photos:
+1. Wiring photos
 2. Videos
