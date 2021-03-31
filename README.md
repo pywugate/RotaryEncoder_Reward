@@ -16,7 +16,7 @@ Please contact me via github if any question.
 8. Electric components (wires, resistors, breadboard, etc)
 
 ## Libraries used:
-Please dig in the detail in my Arduino code and those libs.
+Please dig in the detail in my Arduino code and the following libs.
 1. github.com/GreyGnome/EnableInterrupt
 2. github.com/NicksonYap/digitalWriteFast
 3. github.com/JChristensen/Timer
