@@ -1,5 +1,5 @@
 # RotaryEncoder_Reward
-## RotaryEncoder_Reward is an application for mouse behaviour experiment.
+### RotaryEncoder_Reward is an application for mouse behaviour experiment.
 ### IMPORTANT: The parametres may vary due to different devices.
 
 ### Devices used:
