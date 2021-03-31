@@ -1,5 +1,5 @@
 # RotaryEncoder_Reward
-RotaryEncoder_Reward is a application for mouse behaviour experiment.
+RotaryEncoder_Reward is an application for mouse behaviour experiment.
 It contains the usages of several devices:
 1. Arduino UNO R3
 2. Rotary Encoder
