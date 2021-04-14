@@ -4,9 +4,9 @@ RotaryEncoder_Reward was designed for mouse behaviour experiment for head-fixed 
 
 Please contact me via github if any question.
 
-### IMPORTANT: The parametres may vary due to different devices.
+### IMPORTANT: The parametres may vary due to different components.
 
-## Devices used:
+## Components used:
 1. Arduino UNO R3
 2. Rotary Encoder
 3. Microswitch
@@ -30,6 +30,17 @@ Please dig in the detail in my Arduino code and the following libs.
 ###### Schmatic
 ![Schmatic](https://github.com/pywugate/RotaryEncoder_Reward/blob/ff5aa5d5ec1e675ef749c29bd2ef246359cd9f5a/RotaryEncoder_Reward_schem.jpg)
 
+## Data acquisition
+###### Saleae Logic Pro8 (software Logic 2.3)
+It's is easy to use, but caution that sampling rate in digital and analog.
+###### 6.25MS/s for Digital
+###### 250 S/s  for Analog
+
+###### Femtonics SMART
+Our goal is combining two-photon imaging and behavioural readouts, so we send data into 2P system.
+Because this is a high-end commercial system, it's very easy and friendly input setting.
+
+### IMPORTANT : the sampling rate is hugely hugely different between devices, pay attention at processing.
 
 ## Reference
 TBA/TBD
