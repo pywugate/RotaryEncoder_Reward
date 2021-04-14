@@ -2,7 +2,7 @@
  *  
  *  YUMO E6B2-CWZ3E OPTICAL ENCODER 
  *  Brown : 5V \ Blue : GND \ Exposed : GND \ Black : D2(OUTPUT A) \ White : D3(OUTPUT B) \ Orange : D4(OUTPUT Z)
- *  Maximum permissible speed : 6000 r/min = 1 r/ 10 ms
+ *  Maximum permissible speed : 6000 r/min = 1 r/ 10 ms (so 100Hz)
  *  
  *  Libraries used in this program
  *  1. github.com/GreyGnome/EnableInterrupt
@@ -33,10 +33,10 @@ Adafruit_MCP4725 dac;
 #define lever 5
 
 // Output Pin site
-#define out_lever 9
-#define out_reward 10
-#define out_Dist 11
-#define out_Dir 12
+#define out_relay 8
+#define out_reward 9
+#define out_lever 11
+#define out_dir 12
 #define out_LED 13
 
 //variables for encoder
@@ -55,16 +55,17 @@ int outlier = 200;                                        // set max difference 
 
 //variables for reward
 int rule = N*3;                                           // reward rules:  3 for training; 10 for exps
+long count_reward;
 bool lever_click;
-bool reward;
+int reward;
 
 //variables for MCP4725 12bit DAC
-int scale = 100;                                            // a scale make number beautiful
+int scale = 200;                                            // a scale make number beautiful
 //double unit_volt = 5000/4095;                              // 5000mV / 4095
 float outputV = 0;
 
 //variables for Timer
-const unsigned long PERIOD1 = 500;                         // reward duration, depending on the water valve usage
+const unsigned long PERIOD = 250;                         // reward duration, depending on the water valve usage
 Timer t;                                                   // initiate the timer object
 
 void setup() {
@@ -75,10 +76,13 @@ void setup() {
   pinModeFast(encoderB, INPUT);                            //  pinMode(encoderB, INPUT);
   pinMode(lever, INPUT_PULLUP);
 
-  pinMode(out_lever, OUTPUT);
+  pinMode(out_relay, OUTPUT);
   pinMode(out_reward, OUTPUT);
-  pinMode(out_Dir,OUTPUT);
+  pinMode(out_lever, OUTPUT);
+  pinMode(out_dir,OUTPUT);
   pinMode(out_LED,OUTPUT);
+//  digitalWrite(out_relay,LOW);
+//  digitalWrite(out_reward,LOW);
   
   enableInterrupt(encoderA, motions, RISING);
   enableInterrupt(lever, click_reward, CHANGE);
@@ -89,20 +93,23 @@ void setup() {
 void location(){
   if((bool) digitalReadFast(encoderB) ==  HIGH){           //digitalReadFast() is faster than digitalRead()
     counter ++;
+    count_reward ++;
   }else{
     counter --;
+    count_reward --;
   }
+  
 }
 
 void motions(){  
   location();
   if (Dist < 0){
     Dir = 1;                                               // if rotate CW
-    digitalWrite(out_Dir,HIGH);
+    digitalWrite(out_dir,HIGH);
     digitalWrite(out_LED,HIGH);
   }else{
     Dir = 0;
-    digitalWrite(out_Dir,LOW);
+    digitalWrite(out_dir,LOW);
     digitalWrite(out_LED,LOW);
   }
 }
@@ -112,11 +119,15 @@ void click_reward(){
   {
     digitalWrite(out_lever,HIGH);
     lever_click = 1;
-    if ( counter > rule )
+    if ( count_reward > rule )
     {
-      t.pulseImmediate(out_reward, PERIOD1, HIGH);         // use Timer to turn on reward for specific period
-      t.pulseImmediate(reward, PERIOD1, HIGH);
-      counter = 0;
+      t.pulseImmediate(out_relay,PERIOD,HIGH);         // use Timer to turn on reward for specific period
+                                                       // Important: use a resistor
+      t.pulseImmediate(out_reward,PERIOD,HIGH);
+      count_reward = 0;
+      //      reward = 1;
+//      delay(500);
+//      reward =0;
      }
   }else{
       digitalWrite(out_lever,LOW);
@@ -133,7 +144,7 @@ void loop() {
   Now = counter;
 //  Serial.print(Now);                        
 //  Serial.print('\t');
-  Dist = Now - Prev;  
+  Dist = Now - Prev; 
   if ( abs(Dist) >=  outlier){
     Dist = 0;
   }
@@ -155,17 +166,18 @@ void loop() {
     Serial.print('\t'); 
 //    Serial.print(dL);
 //    Serial.print('\t');
-//    Serial.print(counter);
-//    Serial.print('\t');
+    Serial.print(counter);
+    Serial.print('\t');
+    Serial.print(count_reward);
+    Serial.print('\t');
 //    Serial.print(rule);
 //    Serial.print('\t');
 //    Serial.print(unit);                        
 //    Serial.print('\t');
-    Serial.print(outputV);
-    Serial.print('\t');
+//    Serial.print(outputV);
+//    Serial.print('\t');
 //    Serial.print(unit_volt);                        
 //    Serial.print('\t');
     Serial.println(' ');
-
     t.update();
 }
