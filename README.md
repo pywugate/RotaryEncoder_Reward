@@ -24,12 +24,10 @@ Please dig in the detail in my Arduino code and the following libs.
 5. arduino.cc/en/reference/wire
 
 ## Example photos and/or videos
-Wiring photos
-
-Breakout
+#### Wiring 
+###### Breakout
 ![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/b42652cc0a700b8c1a3ae59be8ff0ebda8aa9c27/RotaryEncoder_Reward_bb.jpg)
-
-Schmatic
+###### Schmatic
 ![Schmatic](https://github.com/pywugate/RotaryEncoder_Reward/blob/ff5aa5d5ec1e675ef749c29bd2ef246359cd9f5a/RotaryEncoder_Reward_schem.jpg)
 
 
