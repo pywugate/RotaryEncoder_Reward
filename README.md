@@ -25,7 +25,7 @@ Please dig in the detail in my Arduino code and the following libs.
 
 ## Example photos and/or videos
 Wiring photos
-[Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/62568f5c6d7e3322cdd812f754e929ea12c3d5d1/RotaryEncoder_Reward_bb.tiff)
+![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/62568f5c6d7e3322cdd812f754e929ea12c3d5d1/RotaryEncoder_Reward_bb.tiff)
 Schmatic
 
 ## Reference
