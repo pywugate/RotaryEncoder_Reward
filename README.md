@@ -4,7 +4,7 @@ RotaryEncoder_Reward was designed for mouse behaviour experiment for head-fixed 
 
 Please contact me via github if any question.
 
-### IMPORTANT: The parametres may vary due to different components.
+##### IMPORTANT: The parametres may vary due to different components.
 
 ## Components used:
 1. Arduino UNO R3
