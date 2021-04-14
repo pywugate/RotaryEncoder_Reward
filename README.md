@@ -31,12 +31,12 @@ Please dig in the detail in my Arduino code and the following libs.
 ![Schmatic](https://github.com/pywugate/RotaryEncoder_Reward/blob/ff5aa5d5ec1e675ef749c29bd2ef246359cd9f5a/RotaryEncoder_Reward_schem.jpg)
 
 ## Data acquisition
-###### Saleae Logic Pro8 (software Logic 2.3)
+#### Saleae Logic Pro8 (software Logic 2.3)
 It's is easy to use, but caution that sampling rate in digital and analog.
 ###### 6.25MS/s for Digital
 ###### 250 S/s  for Analog
 
-###### Femtonics SMART
+#### Femtonics SMART
 Our goal is combining two-photon imaging and behavioural readouts, so we send data into 2P system.
 Because this is a high-end commercial system, it's very easy and friendly input setting.
 
