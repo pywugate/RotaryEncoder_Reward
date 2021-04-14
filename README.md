@@ -25,8 +25,9 @@ Please dig in the detail in my Arduino code and the following libs.
 
 ## Example photos and/or videos
 Wiring photos
-![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/62568f5c6d7e3322cdd812f754e929ea12c3d5d1/RotaryEncoder_Reward_bb.tiff)
-Schmatic
+![Breakout]
+[Schmatic](https://github.com/pywugate/RotaryEncoder_Reward/blob/ff5aa5d5ec1e675ef749c29bd2ef246359cd9f5a/RotaryEncoder_Reward_schem.jpg)
+
 
 ## Reference
 TBA/TBD
