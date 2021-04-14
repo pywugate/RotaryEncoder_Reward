@@ -36,13 +36,13 @@ It's is easy to use, but caution that sampling rate in digital and analog.
 The sampling rate I used
  - 6.25MS/s for Digital
  - 250 S/s  for Analog
-Remember binning the rate for analog (to match rate of encoder)
+###### Remember binning the rate for analog (to match rate of encoder)
 
 #### Femtonics SMART
 Our goal is combining two-photon imaging and behavioural readouts, so we send data into 2P system.
 Because this is a high-end commercial system, it's very easy and friendly input setting.
 
-### IMPORTANT : the sampling rate is hugely hugely different between devices, pay attention at processing.
+##### IMPORTANT : the sampling rate is hugely hugely different between devices, pay attention at processing.
 
 ## Reference
 TBA/TBD
