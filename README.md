@@ -40,7 +40,8 @@ The sampling rate I used
 ##### Remember binning the rate for analog (to match rate of encoder)
 
 #### Femtonics SMART
-Our goal is combining two-photon imaging and behavioural readouts, so we send data into 2P system. \n
+Our goal is combining two-photon imaging and behavioural readouts, so we send data into 2P system.
+
 Because this is a high-end commercial system, it's very easy and friendly input setting.
 
 
