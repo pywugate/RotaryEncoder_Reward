@@ -33,8 +33,10 @@ Please dig in the detail in my Arduino code and the following libs.
 ## Data acquisition
 #### Saleae Logic Pro8 (software Logic 2.3)
 It's is easy to use, but caution that sampling rate in digital and analog.
+The sampling rate I used
  - 6.25MS/s for Digital
  - 250 S/s  for Analog
+Remember binning the rate for analog (to match rate of encoder)
 
 #### Femtonics SMART
 Our goal is combining two-photon imaging and behavioural readouts, so we send data into 2P system.
