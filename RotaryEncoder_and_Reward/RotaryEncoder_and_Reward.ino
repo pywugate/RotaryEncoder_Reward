@@ -54,13 +54,13 @@ bool Dir;                                                 // 1 = CW, 0 = CCW
 int outlier = 200;                                        // set max difference of Dist = 200
 
 //variables for reward
-int rule = N*3;                                           // reward rules:  3 for training; 10 for exps
+int rule = N*10;                                           // reward rules:  3 for training; 10 for exps
 long count_reward;
-bool lever_click;
+bool lever_state;
 int reward;
 
 //variables for MCP4725 12bit DAC
-int scale = 200;                                            // a scale make number beautiful
+int scale = 200;                                            // a scale make analog signal beautiful
 //double unit_volt = 5000/4095;                              // 5000mV / 4095
 float outputV = 0;
 
@@ -85,7 +85,7 @@ void setup() {
 //  digitalWrite(out_reward,LOW);
   
   enableInterrupt(encoderA, motions, RISING);
-  enableInterrupt(lever, click_reward, CHANGE);
+  enableInterrupt(lever, lever_click, CHANGE);
 
   Prev = 0;
 }
@@ -114,25 +114,29 @@ void motions(){
   }
 }
 
-void click_reward(){
+ void lever_click(){
   if ((bool) digitalRead(lever) == HIGH)
   {
     digitalWrite(out_lever,HIGH);
-    lever_click = 1;
-    if ( count_reward > rule )
-    {
-      t.pulseImmediate(out_relay,PERIOD,HIGH);         // use Timer to turn on reward for specific period
-                                                       // Important: use a resistor
-      t.pulseImmediate(out_reward,PERIOD,HIGH);
-      count_reward = 0;
-      //      reward = 1;
+    lever_state = 1;
+    give_reward();
+  }else{
+    digitalWrite(out_lever,LOW);
+    lever_state = 0;
+  }
+}
+
+void give_reward(){
+  if ( count_reward > rule )
+  {
+    t.pulseImmediate(out_relay,PERIOD,HIGH);         // use Timer to turn on reward for specific period
+                                                     // Important: use a resistor
+    t.pulseImmediate(out_reward,PERIOD,HIGH);
+    count_reward = 0;
+//      reward = 1;
 //      delay(500);
 //      reward =0;
-     }
-  }else{
-      digitalWrite(out_lever,LOW);
-      lever_click = 0;
-  }
+   }
 }
 
 void loop() {
@@ -160,7 +164,7 @@ void loop() {
     Serial.print('\t');
     Serial.print(Dist);
     Serial.print('\t');
-    Serial.print(lever_click);
+    Serial.print(lever_state);
     Serial.print('\t');
     Serial.print(reward);
     Serial.print('\t'); 
