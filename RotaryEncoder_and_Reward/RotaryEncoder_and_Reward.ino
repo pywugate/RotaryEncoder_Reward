@@ -1,4 +1,4 @@
-/* 
+/* 2021 Apr. 17 
  *  
  *  YUMO E6B2-CWZ3E OPTICAL ENCODER 
  *  Brown : 5V \ Blue : GND \ Exposed : GND \ Black : D2(OUTPUT A) \ White : D3(OUTPUT B) \ Orange : D4(OUTPUT Z)
@@ -54,7 +54,7 @@ bool Dir;                                                 // 1 = CW, 0 = CCW
 int outlier = 200;                                        // set max difference of Dist = 200
 
 //variables for reward
-int rule = N*10;                                           // reward rules:  3 for training; 10 for exps
+int rule = N*3;                                           // reward rules:  3 for training; 10 for exps
 long count_reward;
 bool lever_state;
 int reward;
@@ -98,7 +98,6 @@ void location(){
     counter --;
     count_reward --;
   }
-  
 }
 
 void motions(){  
@@ -127,8 +126,7 @@ void motions(){
 }
 
 void give_reward(){
-  if ( count_reward > rule )
-  {
+//  if ( count_reward > rule ){
     t.pulseImmediate(out_relay,PERIOD,HIGH);         // use Timer to turn on reward for specific period
                                                      // Important: use a resistor
     t.pulseImmediate(out_reward,PERIOD,HIGH);
@@ -136,7 +134,7 @@ void give_reward(){
 //      reward = 1;
 //      delay(500);
 //      reward =0;
-   }
+//   }
 }
 
 void loop() {
