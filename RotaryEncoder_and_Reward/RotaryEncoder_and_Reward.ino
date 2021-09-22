@@ -1,9 +1,5 @@
 /* 2021 Sep. 21
  *  
- *  YUMO E6B2-CWZ3E OPTICAL ENCODER 
- *  Brown : 5V \ Blue : GND \ Exposed : GND \ Black : D2(OUTPUT A) \ White : D3(OUTPUT B) \ Orange : D4(OUTPUT Z)
- *  Maximum permissible speed : 6000 r/min = 1 r/ 10 ms (so 100Hz)
- *  
  *  Libraries used in this program
  *  1. github.com/GreyGnome/EnableInterrupt
  *  2. github.com/NicksonYap/digitalWriteFast
