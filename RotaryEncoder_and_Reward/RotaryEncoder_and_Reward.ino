@@ -28,10 +28,10 @@
 Adafruit_MCP4725 dac;
 
 // Input Pin site
-#define encoderA 2
-#define encoderB 3
-#define lever    5
-#define lick     6
+#define encoderA    2
+#define encoderB    3
+#define lever       5
+#define lick        6
 
 // Output Pin site
 #define out_relay   8
@@ -39,7 +39,6 @@ Adafruit_MCP4725 dac;
 #define out_lick    10
 #define out_lever   11
 #define out_dir     12                                  // output by DAC is using SDA pin, so pin12 is not in use
-//#define out_LED     13
 
 //fixed figures for encoder, these figures are unique to the type of encoder
 int encoderlimit = 10;                                    // Maximum permissible speed : 6000 r/min = 1 r/ 10 ms
@@ -58,7 +57,6 @@ int outlier = 200;                                        // set max difference 
 //variables for MCP4725 12bit DAC
 int scale = 100;                                          // a scale make analogue signal beautiful
 float outputV = 0;
-//double unit_volt = 5000/4095;                           // 5000mV / 4095
 
 //variables for reward and licking
 int rule = N*3;                                           // reward rules:  3 for training; 10 for exps
@@ -86,7 +84,6 @@ void setup() {
   pinMode(out_lick, OUTPUT);
   pinMode(out_lever, OUTPUT);
   pinMode(out_dir,OUTPUT);
-//  pinMode(out_LED,OUTPUT);
   digitalWrite(out_relay,LOW);
   digitalWrite(out_reward,LOW);
   
@@ -111,11 +108,9 @@ void motions(){
   if (Dist < 0){
     Dir = 0;                                               // if rotate CCW
     digitalWrite(out_dir,LOW);
-//    digitalWrite(out_LED,LOW);
   }else if (Dist > 0){
     Dir = 1;
     digitalWrite(out_dir,HIGH);
-//    digitalWrite(out_LED,HIGH);
   }else{
     Dir = 0;
   }
@@ -124,46 +119,36 @@ void motions(){
  void lever_click(){
   if ((bool) digitalRead(lever) == HIGH) {
     digitalWrite(out_lever,HIGH);
-    lever_state = 1;
     give_reward();
   }else{
     digitalWrite(out_lever,LOW);
-    lever_state = 0;
   }
 }
 
 void give_reward(){
   if ( count_reward > rule ){
     t.pulseImmediate(out_relay,PERIOD,HIGH);             // use Timer to turn on reward for specific period
-                                                         // ?? Important: use a resistor 
     t.pulseImmediate(out_reward,PERIOD,HIGH);
     count_reward = 0;
-//    reward = 1;
-//    delay(500);
-//    reward =0;
    }
 }
 
 void lick_chk(){
   if ((bool) digitalRead(lick) == HIGH){
     digitalWrite(out_lick,HIGH);
-//    lick_state = 1;                                     // only for output in Serial Plotter
   }else{
     digitalWrite(out_lick,LOW);
-//    lick_state = 0;  
   }
 }
 
 void loop() {
   
 /*  IMPORTANT:
- *  we need a delay time to calculate the difference
+ *  a delay time needed to calculate the difference
  *  the calculation of movement cannot be triggered by interrupt funct, bcz the device will stop recording
  */
  
   Now = counter;
-//  Serial.print(Now);                        
-//  Serial.print('\t');
   Dist = Now - Prev; 
   if ( abs(Dist) >=  outlier){
     Dist = 0;
@@ -172,44 +157,7 @@ void loop() {
   dac.setVoltage(outputV, false);
   
   Prev = counter;
-//  Serial.print(Prev);                        
-//  Serial.print('\t');
-
   delay(encoderlimit*1);                                          // delay x ms to calculate distance
-  
-//    Serial.print(counter);
-//    Serial.print('\t');
-//
-//    Serial.print(Dir);  
-//    Serial.print('\t');
-//
-//    Serial.print(Dist);                                // it becomes noisy when wheel put on, why?
-//    Serial.print('\t');
-//
-//    Serial.print(count_reward);
-//    Serial.print('\t');
-//
-//    Serial.print(outputV);
-//    Serial.print('\t');
-//
-//    Serial.print(dL);
-//    Serial.print('\t');
-//
-//    Serial.print(rule);
-//    Serial.print('\t');
-//
-//    Serial.print(lever_state);
-//    Serial.print('\t');
-//
-//    Serial.print(lick_state);
-//    Serial.print('\t');
-
-//    Serial.print(reward);
-//    Serial.print('\t'); 
-//    Serial.print(unit_volt);                        
-//    Serial.print('\t');
-
-
-    Serial.println(' ');
-    t.update();
+  Serial.println(' ');
+  t.update();
 }
