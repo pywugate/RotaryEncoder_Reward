@@ -9,6 +9,14 @@ Please contact me via github if any question.
 ## Components used:
 1. Arduino UNO R3
 2. Rotary Encoder
+ -  YUMO E6B2-CWZ3E OPTICAL ENCODER or equivalent
+    * Brown: 5V
+    * Blue: GND
+    * Black: D2(OUTPUT A)
+    * White: D3(OUTPUT B)
+    * Orange: D4(OUTPUT Z)
+    * Exposed: Shield
+    * Maximum permissible speed : 6000 r/min = 1 r/ 10 ms (so 100Hz)
 3. Microswitch
 4. Relay Module (JQC-3FF-S-Z)
 6. Electric valve
