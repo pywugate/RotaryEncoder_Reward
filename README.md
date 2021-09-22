@@ -14,6 +14,7 @@ Please contact me via github if any question.
 6. Electric valve
 7. DAC (MCP4725)
 8. Electric components (wires, resistors, breadboard, etc)
+9. Thin metal tube
 
 ## Libraries used:
 Please dig in the detail in my Arduino code and the following libs.
