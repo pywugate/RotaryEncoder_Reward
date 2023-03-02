@@ -1,4 +1,4 @@
-/* 2021 Sep. 21
+/* 2023 Mar. 02
  *  
  *  Libraries used in this program
  *  1. github.com/GreyGnome/EnableInterrupt
@@ -30,16 +30,17 @@ Adafruit_MCP4725 dac;
 #define lick        6
 
 // Output Pin site
-#define out_relay   8
+#define out_water   8
 #define out_reward  9
 #define out_lick    10
 #define out_lever   11
-#define out_dir     12                                  // output by DAC is using SDA pin, so pin12 is not in use
+#define out_dir     12
+// output by DAC is using SDA pin, so pin12 is not in use
 
-//fixed figures for encoder, these figures are unique to the type of encoder
+//fixed figures for encoder, these figures are unique to the encoder
 int encoderlimit = 10;                                    // Maximum permissible speed : 6000 r/min = 1 r/ 10 ms
-const int N = 1024;                                             
-const int r = 110;                                        // avg radius = 110 mm => circum = 2*PI*r;                               
+const int N = 1000;                                       // resolution of encoder?
+const int r = 110;                                        // set avg radius = 110 mm => circum = 2*PI*r;                               
 double dL =  2*PI*r / N;                                  // dL = cirum / N (mm)
 
 //variables for motion
@@ -47,18 +48,19 @@ long Now;
 long Prev;
 long Dist;
 long counter;                                             
-int Dir;                                                  // 0 = CW, 1 = CCW
-int outlier = 200;                                        // set max difference of Dist = 200
+int  Dir;                                                  // 0 = CW, 1 = CCW
+int  outlier = 200;                                        // set max difference of Dist = 200
 
 //variables for MCP4725 12bit DAC
-int scale = 100;                                          // a scale make analogue signal beautiful
+int   scale = 200;                                          // a magic scale make analogue signal beautiful
 float outputV = 0;
 
 //variables for reward and licking
 int rule = N*3;                                           // reward rules:  3 for training; 10 for exps
 int reward;
-long count_reward;                                        // for reward  counting
-const unsigned long PERIOD = 250;                         // reward duration, depending on the water valve usage
+int count_reward;                                         // decision to give reward
+const unsigned long PERIOD = 500;                         // reward duration, depending on the water valve usage
+// 25ml full syringe gives 0.2ml in 10 secs  ;  2ml only in 25ml syringe give 0.1ml in 10 secs
 
 // output only in Serial Plotter
 bool lever_state;
@@ -68,19 +70,19 @@ Timer t;                                                  // initiate the timer 
 
 void setup() {
   Serial.begin(9600);                                     // change higher number if need higher sampling rate
-  dac.begin(0x62);
+  dac.begin(0x62);                                        // call DAC function
   
-  pinModeFast(encoderA, INPUT);                           // faster than pinMode(encoderA, INPUT);
-  pinModeFast(encoderB, INPUT);                           // faster than pinMode(encoderB, INPUT);
+  pinModeFast(encoderA, INPUT);                           // faster than pinMode(encoderA, INPUT_PULLUP);
+  pinModeFast(encoderB, INPUT);                           // faster than pinMode(encoderB, INPUT_PULLUP);
   pinMode(lever, INPUT_PULLUP);
   pinMode(lick, INPUT_PULLUP);
 
-  pinMode(out_relay, OUTPUT);
+  pinMode(out_water, OUTPUT);
   pinMode(out_reward, OUTPUT);
   pinMode(out_lick, OUTPUT);
   pinMode(out_lever, OUTPUT);
   pinMode(out_dir,OUTPUT);
-  digitalWrite(out_relay,LOW);
+  digitalWrite(out_water,LOW);
   digitalWrite(out_reward,LOW);
   
   enableInterrupt(encoderA, motions, RISING);
@@ -113,20 +115,22 @@ void motions(){
 }
 
  void lever_click(){
-  if ((bool) digitalRead(lever) == HIGH) {
-    digitalWrite(out_lever,HIGH);
+  if ((bool) digitalRead(lever) == HIGH){
+//    digitalWrite(out_lever,HIGH);    
+    t.pulseImmediate(out_lever,PERIOD/10,HIGH);  
     give_reward();
-  }else{
-    digitalWrite(out_lever,LOW);
+//  }else{
+//    digitalWrite(out_lever,LOW);
   }
 }
 
 void give_reward(){
-  if ( count_reward > rule ){
-    t.pulseImmediate(out_relay,PERIOD,HIGH);             // use Timer to turn on reward for specific period
-    t.pulseImmediate(out_reward,PERIOD,HIGH);
+//  if ( count_reward > rule*0 ){
+    t.pulseImmediate(out_water,PERIOD,HIGH);             // use Timer to turn on reward for specific period
+    t.pulseImmediate(out_reward,PERIOD,HIGH);    
     count_reward = 0;
-   }
+//   }
+    digitalWrite(out_lever,LOW);
 }
 
 void lick_chk(){
@@ -150,10 +154,12 @@ void loop() {
     Dist = 0;
   }  
   outputV = abs(Dist)*dL*scale;
+//  outputV = abs(Dist)*scale;
+
   dac.setVoltage(outputV, false);
   
   Prev = counter;
-  delay(encoderlimit*1);                                          // delay x ms to calculate distance
-  Serial.println(' ');
+  delay(encoderlimit*1);                  // delay x ms to calculate distance
+//  Serial.println(' ');
   t.update();
 }
