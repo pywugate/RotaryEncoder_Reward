@@ -34,7 +34,7 @@ Please dig in the detail in my Arduino code and the following libs.
 
 ## Example photos and/or videos
 #### Wiring 
-!
+### IMPORTANT I'm not PRO so I'm lazy to draw the connections of the GND for all readouts
 ###### Breakout
 ![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/3a97ebebdc2417a64fa36b13af449324326d1b36/RotaryEncoder_Reward_bb2023Mar.jpg)
 ###### Schmatic
@@ -42,7 +42,7 @@ Please dig in the detail in my Arduino code and the following libs.
 
 ## Data acquisition
 ### IMPORTANT : the sampling rate is hugely hugely different between devices, pay attention at processing.
-### Saleae Logic Pro8 (software Logic 2.3)
+### Saleae Logic Pro8 (software Logic2)
 It's is easy to use, but caution that sampling rate in digital and analog.
 The sampling rate I used
  - 6.25 MS/s for Digital
