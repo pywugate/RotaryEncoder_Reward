@@ -33,7 +33,7 @@ Please dig in the detail in my Arduino code and the following libs.
 5. arduino.cc/en/reference/wire
 
 ## Example photos and/or videos
-#### Wiring (I'm not PRO so I'm lazy to draw the connections of the GND for all readouts)
+#### Wiring (I'm not PRO so I'm lazy to draw the connections of the GND for  readouts)
 ###### Breakout
 ![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/3a97ebebdc2417a64fa36b13af449324326d1b36/RotaryEncoder_Reward_bb2023Mar.jpg)
 ###### Schmatic
