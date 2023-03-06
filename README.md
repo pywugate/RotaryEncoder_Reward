@@ -35,9 +35,9 @@ Please dig in the detail in my Arduino code and the following libs.
 ## Example photos and/or videos
 #### Wiring 
 ###### Breakout
-![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/b42652cc0a700b8c1a3ae59be8ff0ebda8aa9c27/RotaryEncoder_Reward_bb.jpg)
+![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/3a97ebebdc2417a64fa36b13af449324326d1b36/RotaryEncoder_Reward_bb2023Mar.jpg)
 ###### Schmatic
-![Schmatic](https://github.com/pywugate/RotaryEncoder_Reward/blob/ff5aa5d5ec1e675ef749c29bd2ef246359cd9f5a/RotaryEncoder_Reward_schem.jpg)
+![Schmatic]()
 
 ## Data acquisition
 ### IMPORTANT : the sampling rate is hugely hugely different between devices, pay attention at processing.
