@@ -37,7 +37,7 @@ Please dig in the detail in my Arduino code and the following libs.
 ###### Breakout
 ![Breakout](https://github.com/pywugate/RotaryEncoder_Reward/blob/3a97ebebdc2417a64fa36b13af449324326d1b36/RotaryEncoder_Reward_bb2023Mar.jpg)
 ###### Schmatic
-![Schmatic()](https://github.com/pywugate/RotaryEncoder_Reward/blob/5ced14443a1199606201e3dcdc5c47386767ac44/RotaryEncoder_Reward_schem2023Mar.jpg)
+
 
 ## Data acquisition
 ### IMPORTANT : the sampling rate is hugely hugely different between devices, pay attention at processing.
