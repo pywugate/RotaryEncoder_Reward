@@ -40,7 +40,7 @@ Please dig in the detail in my Arduino code and the following libs.
 
 
 ## Data acquisition
-### IMPORTANT : the sampling rate is hugely hugely different between devices, pay attention at processing.
+### IMPORTANT : the sampling rate is different between devices, pay attention at processing.
 ### Saleae Logic Pro8 (software Logic2)
 It's is easy to use, but caution that sampling rate in digital and analog.
 The sampling rate I used
